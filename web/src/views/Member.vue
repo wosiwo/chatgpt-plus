@@ -16,13 +16,13 @@
               <el-col :span="12">
                 <el-button type="primary" @click="showBindMobileDialog = true">更改账号</el-button>
               </el-col>
-              <el-col :span="12">
-                <el-button type="primary" v-if="enableReward" @click="showRewardDialog = true">加入众筹</el-button>
-              </el-col>
-              <el-col :span="12">
-                <el-button type="primary" v-if="enableReward" @click="showRewardVerifyDialog = true">众筹核销
-                </el-button>
-              </el-col>
+<!--              <el-col :span="12">-->
+<!--                <el-button type="primary" v-if="enableReward" @click="showRewardDialog = true">加入众筹</el-button>-->
+<!--              </el-col>-->
+<!--              <el-col :span="12">-->
+<!--                <el-button type="primary" v-if="enableReward" @click="showRewardVerifyDialog = true">众筹核销-->
+<!--                </el-button>-->
+<!--              </el-col>-->
 
               <el-col :span="24" style="padding-top: 30px">
                 <el-button type="danger" round @click="logout">退出登录</el-button>

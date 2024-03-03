@@ -32,22 +32,22 @@
       <el-form-item label="剩余对话次数">
         <el-tag>{{ user['calls'] }}</el-tag>
       </el-form-item>
-      <el-form-item label="剩余绘图次数">
-        <el-tag>{{ user['img_calls'] }}</el-tag>
-      </el-form-item>
-      <el-form-item label="本月消耗电量">
-        <el-tag type="info">{{ user['tokens'] }}</el-tag>
-      </el-form-item>
-      <el-form-item label="累计消耗电量">
-        <el-tag type="info">{{ user['total_tokens'] }}</el-tag>
-      </el-form-item>
-      <el-form-item label="会员到期时间" v-if="user['expired_time']  > 0">
-        <el-tag type="danger">{{ dateFormat(user['expired_time']) }}</el-tag>
-      </el-form-item>
+<!--      <el-form-item label="剩余绘图次数">-->
+<!--        <el-tag>{{ user['img_calls'] }}</el-tag>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="本月消耗电量">-->
+<!--        <el-tag type="info">{{ user['tokens'] }}</el-tag>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="累计消耗电量">-->
+<!--        <el-tag type="info">{{ user['total_tokens'] }}</el-tag>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="会员到期时间" v-if="user['expired_time']  > 0">-->
+<!--        <el-tag type="danger">{{ dateFormat(user['expired_time']) }}</el-tag>-->
+<!--      </el-form-item>-->
 
-      <el-row class="opt-line">
-        <el-button color="#47fff1" :dark="false" round @click="save">保存</el-button>
-      </el-row>
+<!--      <el-row class="opt-line">-->
+<!--        <el-button color="#47fff1" :dark="false" round @click="save">保存</el-button>-->
+<!--      </el-row>-->
     </el-form>
   </div>
 </template>

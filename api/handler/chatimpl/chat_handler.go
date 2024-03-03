@@ -289,6 +289,10 @@ func (h *ChatHandler) sendMessage(ctx context.Context, session *types.ChatSessio
 		req.Input = map[string]interface{}{"messages": []map[string]string{{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": prompt}}}
 		req.Parameters = map[string]interface{}{}
 		break
+	case types.QA:
+		req.Input = map[string]interface{}{"messages": []map[string]string{{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": prompt}}}
+		req.Parameters = map[string]interface{}{}
+		break
 	default:
 		utils.ReplyMessage(ws, "不支持的平台："+session.Model.Platform+"，请联系管理员！")
 		utils.ReplyMessage(ws, ErrImg)
@@ -350,21 +354,24 @@ func (h *ChatHandler) sendMessage(ctx context.Context, session *types.ChatSessio
 		"role":    "user",
 		"content": prompt,
 	})
+	return h.sendQAMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
 
-	switch session.Model.Platform {
-	case types.Azure:
-		return h.sendAzureMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	case types.OpenAI:
-		return h.sendOpenAiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	case types.ChatGLM:
-		return h.sendChatGLMMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	case types.Baidu:
-		return h.sendBaiduMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	case types.XunFei:
-		return h.sendXunFeiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	case types.QWen:
-		return h.sendQWenMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	}
+	//switch session.Model.Platform {
+	//case types.Azure:
+	//	return h.sendAzureMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//case types.OpenAI:
+	//	return h.sendOpenAiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//case types.ChatGLM:
+	//	return h.sendChatGLMMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//case types.Baidu:
+	//	return h.sendBaiduMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//case types.XunFei:
+	//	return h.sendXunFeiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//case types.QWen:
+	//	return h.sendQWenMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//case types.QA:
+	//	return h.sendQAMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	//}
 	utils.ReplyChunkMessage(ws, types.WsMessage{
 		Type:    types.WsMiddle,
 		Content: fmt.Sprintf("Not supported platform: %s", session.Model.Platform),
@@ -439,10 +446,14 @@ func (h *ChatHandler) StopGenerate(c *gin.Context) {
 // 发送请求到 OpenAI 服务器
 // useOwnApiKey: 是否使用了用户自己的 API KEY
 func (h *ChatHandler) doRequest(ctx context.Context, req types.ApiRequest, platform types.Platform, apiKey *model.ApiKey) (*http.Response, error) {
-	res := h.db.Where("platform = ?", platform).Where("type = ?", "chat").Where("enabled = ?", true).Order("last_used_at ASC").First(apiKey)
-	if res.Error != nil {
-		return nil, errors.New("no available key, please import key")
+	if platform != types.QA {
+		logger.Debugf("QA type error ")
+		res := h.db.Where("platform = ?", platform).Where("type = ?", "chat").Where("enabled = ?", true).Order("last_used_at ASC").First(apiKey)
+		if res.Error != nil {
+			return nil, errors.New("no available key, please import key")
+		}
 	}
+	logger.Info("platform ", platform)
 	var apiURL string
 	switch platform {
 	case types.Azure:
@@ -460,6 +471,25 @@ func (h *ChatHandler) doRequest(ctx context.Context, req types.ApiRequest, platf
 	case types.QWen:
 		apiURL = apiKey.ApiURL
 		req.Messages = nil
+		break
+	case types.QA:
+		logger.Info("QA type ")
+		logger.Info("req ", req)
+
+		apiURL = "http://192.168.3.109:8777/api/local_doc_qa/local_doc_chat"
+		req.UserId = "zzp"
+		req.KbIds = []string{"KB636738c4e0264ae594c96f2811107ed6"}
+		req.History = []string{"你是谁"}
+		logger.Info("req.Messages ", req.Messages)
+		req.Question = req.Messages[len(req.Messages)-1].(map[string]interface{})["content"].(string)
+		req.Model = ""
+		req.Messages = nil
+		req.Prompt = nil
+		req.Functions = nil
+		req.Tools = nil
+		req.Parameters = nil
+		req.Input = nil
+		req.Streaming = true
 		break
 	default:
 		if req.Model == "gpt-4-all" || strings.HasPrefix(req.Model, "gpt-4-gizmo-g-") {
@@ -480,7 +510,8 @@ func (h *ChatHandler) doRequest(ctx context.Context, req types.ApiRequest, platf
 		apiURL = fmt.Sprintf("%s?access_token=%s", apiURL, token)
 	}
 
-	logger.Debugf(utils.JsonEncode(req))
+	logger.Info(apiURL)
+	logger.Info(utils.JsonEncode(req))
 
 	// 创建 HttpClient 请求对象
 	var client *http.Client
@@ -507,7 +538,7 @@ func (h *ChatHandler) doRequest(ctx context.Context, req types.ApiRequest, platf
 	} else {
 		client = http.DefaultClient
 	}
-	logger.Debugf("Sending %s request, ApiURL:%s, Password:%s, PROXY: %s, Model: %s", platform, apiURL, apiKey.Value, proxyURL, req.Model)
+	logger.Info("Sending %s request, ApiURL:%s, Password:%s, PROXY: %s, Model: %s", platform, apiURL, apiKey.Value, proxyURL, req.Model)
 	switch platform {
 	case types.Azure:
 		request.Header.Set("api-key", apiKey.Value)

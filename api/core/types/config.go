@@ -148,6 +148,7 @@ const ChatGLM = Platform("ChatGLM")
 const Baidu = Platform("Baidu")
 const XunFei = Platform("XunFei")
 const QWen = Platform("QWen")
+const QA = Platform("QA")
 
 // UserChatConfig 用户的聊天配置
 type UserChatConfig struct {

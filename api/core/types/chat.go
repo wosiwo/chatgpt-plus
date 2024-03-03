@@ -3,10 +3,15 @@ package types
 // ApiRequest API 请求实体
 type ApiRequest struct {
 	Model       string        `json:"model,omitempty"` // 兼容百度文心一言
+	UserId      string        `json:"user_id"`         // 兼容QA知识库
+	Question    string        `json:"question"`        // 兼容QA知识库 提问内容
+	KbIds       []string      `json:"kb_ids"`          // 兼容QA知识库,知识库Id
+	History     []string      `json:"history"`         // 兼容QA知识库,历史问答
 	Temperature float32       `json:"temperature"`
 	MaxTokens   int           `json:"max_tokens,omitempty"` // 兼容百度文心一言
 	Stream      bool          `json:"stream"`
-	Messages    []interface{} `json:"messages,omitempty"`
+	Streaming   bool          `json:"streaming"`
+	Messages    []interface{} `json:"messages,omitempty,"`
 	Prompt      []interface{} `json:"prompt,omitempty"` // 兼容 ChatGLM
 	Tools       []interface{} `json:"tools,omitempty"`
 	Functions   []interface{} `json:"functions,omitempty"` // 兼容中转平台
