@@ -81,41 +81,41 @@ const items = [
     title: '用户管理',
   },
 
-  {
-    icon: 'role',
-    index: '/admin/role',
-    title: '角色管理',
-  },
-  {
-    icon: 'api-key',
-    index: '/admin/apikey',
-    title: 'API-KEY',
-  },
-  {
-    icon: 'model',
-    index: '/admin/chat/model',
-    title: '语言模型',
-  },
-  {
-    icon: 'recharge',
-    index: '/admin/product',
-    title: '充值产品',
-  },
-  {
-    icon: 'order',
-    index: '/admin/order',
-    title: '充值订单',
-  },
-  {
-    icon: 'reward',
-    index: '/admin/reward',
-    title: '众筹管理',
-  },
-  {
-    icon: 'control',
-    index: '/admin/functions',
-    title: '函数管理',
-  },
+  // {
+  //   icon: 'role',
+  //   index: '/admin/role',
+  //   title: '角色管理',
+  // },
+  // {
+  //   icon: 'api-key',
+  //   index: '/admin/apikey',
+  //   title: 'API-KEY',
+  // },
+  // {
+  //   icon: 'model',
+  //   index: '/admin/chat/model',
+  //   title: '语言模型',
+  // },
+  // {
+  //   icon: 'recharge',
+  //   index: '/admin/product',
+  //   title: '充值产品',
+  // },
+  // {
+  //   icon: 'order',
+  //   index: '/admin/order',
+  //   title: '充值订单',
+  // },
+  // {
+  //   icon: 'reward',
+  //   index: '/admin/reward',
+  //   title: '众筹管理',
+  // },
+  // {
+  //   icon: 'control',
+  //   index: '/admin/functions',
+  //   title: '函数管理',
+  // },
   {
     icon: 'config',
     index: '/admin/system',

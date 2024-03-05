@@ -18,16 +18,16 @@
     <div class="header-right">
       <div class="header-user-con">
         <!-- 消息中心 -->
-        <div class="btn-bell">
-          <el-tooltip
-              effect="dark"
-              :content="message ? `有${message}条未读消息` : `消息中心`"
-              placement="bottom"
-          >
-            <i class="iconfont icon-bell"></i>
-          </el-tooltip>
-          <span class="btn-bell-badge" v-if="message"></span>
-        </div>
+<!--        <div class="btn-bell">-->
+<!--          <el-tooltip-->
+<!--              effect="dark"-->
+<!--              :content="message ? `有${message}条未读消息` : `消息中心`"-->
+<!--              placement="bottom"-->
+<!--          >-->
+<!--            <i class="iconfont icon-bell"></i>-->
+<!--          </el-tooltip>-->
+<!--          <span class="btn-bell-badge" v-if="message"></span>-->
+<!--        </div>-->
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name" :hide-on-click="true" trigger="click">
 					<span class="el-dropdown-link">
@@ -39,16 +39,16 @@
           <template #dropdown>
             <el-dropdown-menu>
 
-              <a href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">
-                <el-dropdown-item>
-                  <i class="iconfont icon-github"></i>
-                  <span>{{ sysTitle }}</span>
-                </el-dropdown-item>
-              </a>
-              <el-dropdown-item @click="showDialog = true">
-                <i class="iconfont icon-reward"></i>
-                <span>打赏作者</span>
-              </el-dropdown-item>
+<!--              <a href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">-->
+<!--                <el-dropdown-item>-->
+<!--                  <i class="iconfont icon-github"></i>-->
+<!--                  <span>{{ sysTitle }}</span>-->
+<!--                </el-dropdown-item>-->
+<!--              </a>-->
+<!--              <el-dropdown-item @click="showDialog = true">-->
+<!--                <i class="iconfont icon-reward"></i>-->
+<!--                <span>打赏作者</span>-->
+<!--              </el-dropdown-item>-->
               <el-dropdown-item divided @click="logout">
                 <i class="iconfont icon-logout"></i>
                 <span>退出登录</span>

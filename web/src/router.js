@@ -11,51 +11,51 @@ const routes = [
             {
                 name: 'chat',
                 path: '/chat',
-                meta: {title: '创作中心'},
+                meta: {title: 'AI智能助手'},
                 component: () => import('@/views/ChatPlus.vue'),
             },
-            {
-                name: 'image-mj',
-                path: '/mj',
-                meta: {title: 'MidJourney 绘画中心'},
-                component: () => import('@/views/ImageMj.vue'),
-            },
-            {
-                name: 'image-sd',
-                path: '/sd',
-                meta: {title: 'stable diffusion 绘画中心'},
-                component: () => import('@/views/ImageSd.vue'),
-            },
-            {
-                name: 'member',
-                path: '/member',
-                meta: {title: '会员充值中心'},
-                component: () => import('@/views/Member.vue'),
-            },
-            {
-                name: 'chat-role',
-                path: '/apps',
-                meta: {title: '应用中心'},
-                component: () => import('@/views/ChatApps.vue'),
-            },
-            {
-                name: 'images',
-                path: '/images-wall',
-                meta: {title: '作品展示'},
-                component: () => import('@/views/ImagesWall.vue'),
-            },
-            {
-                name: 'user-invitation',
-                path: '/invite',
-                meta: {title: '推广计划'},
-                component: () => import('@/views/Invitation.vue'),
-            },
-            {
-                name: 'knowledge',
-                path: '/knowledge',
-                meta: {title: '我的知识库'},
-                component: () => import('@/views/Knowledge.vue'),
-            },
+            // {
+            //     name: 'image-mj',
+            //     path: '/mj',
+            //     meta: {title: 'MidJourney 绘画中心'},
+            //     component: () => import('@/views/ImageMj.vue'),
+            // },
+            // {
+            //     name: 'image-sd',
+            //     path: '/sd',
+            //     meta: {title: 'stable diffusion 绘画中心'},
+            //     component: () => import('@/views/ImageSd.vue'),
+            // },
+            // {
+            //     name: 'member',
+            //     path: '/member',
+            //     meta: {title: '会员充值中心'},
+            //     component: () => import('@/views/Member.vue'),
+            // },
+            // {
+            //     name: 'chat-role',
+            //     path: '/apps',
+            //     meta: {title: '应用中心'},
+            //     component: () => import('@/views/ChatApps.vue'),
+            // },
+            // {
+            //     name: 'images',
+            //     path: '/images-wall',
+            //     meta: {title: '作品展示'},
+            //     component: () => import('@/views/ImagesWall.vue'),
+            // },
+            // {
+            //     name: 'user-invitation',
+            //     path: '/invite',
+            //     meta: {title: '推广计划'},
+            //     component: () => import('@/views/Invitation.vue'),
+            // },
+            // {
+            //     name: 'knowledge',
+            //     path: '/knowledge',
+            //     meta: {title: '我的知识库'},
+            //     component: () => import('@/views/Knowledge.vue'),
+            // },
         ]
     },
     {
@@ -167,7 +167,7 @@ const routes = [
     {
         name: 'mobile',
         path: '/mobile',
-        meta: {title: 'ChatPuls-智能助手V3'},
+        meta: {title: 'AI智能助手'},
         component: () => import('@/views/mobile/Home.vue'),
         redirect: '/mobile/chat/list',
         children: [

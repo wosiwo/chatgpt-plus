@@ -2,7 +2,7 @@
   <div class="container">
     <div class="footer">
       Powered by {{ author }} @
-      <el-link type="primary" href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">{{ title }}
+      <el-link type="primary" href="#" target="_blank">{{ title }}
       </el-link>
     </div>
   </div>
@@ -12,7 +12,7 @@
 import {ref} from "vue";
 
 const title = ref(process.env.VUE_APP_TITLE)
-const author = ref('极客学长')
+const author = ref('AI智能助手')
 </script>
 
 <style scoped lang="stylus">

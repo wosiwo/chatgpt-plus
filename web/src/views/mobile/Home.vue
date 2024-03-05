@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <h1 class="banner-title">AI智能助理</h1>
+    <h1 class="banner-title">AI智能助手</h1>
   </div>
   <van-config-provider theme="dark">
     <div class="mobile-home">

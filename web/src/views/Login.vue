@@ -64,7 +64,7 @@ import {prevRoute} from "@/router";
 import ResetPass from "@/components/ResetPass.vue";
 
 const router = useRouter();
-const title = ref('ChatPlus 用户登录');
+const title = ref('AI智能助手 用户登录');
 const username = ref(process.env.VUE_APP_USER);
 const password = ref(process.env.VUE_APP_PASS);
 const showResetPass = ref(false)
@@ -93,7 +93,7 @@ onUnmounted(() => {
 
 const login = function () {
   if (!validateMobile(username.value) && !validateEmail(username.value)) {
-    return ElMessage.error("请输入合法的手机号/邮箱地址")
+    // return ElMessage.error("请输入合法的手机号/邮箱地址")
   }
   if (password.value.trim() === '') {
     return ElMessage.error('请输入密码');

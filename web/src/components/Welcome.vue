@@ -3,53 +3,53 @@
     <div class="container">
       <h1 class="title">{{ title }}</h1>
 
-      <el-row :gutter="20">
-        <el-col :span="8">
-          <div class="grid-content">
-            <div class="item-title">
-              <div><i class="iconfont icon-quick-start"></i></div>
-              <div>小试牛刀</div>
-            </div>
+<!--      <el-row :gutter="20">-->
+<!--        <el-col :span="8">-->
+<!--          <div class="grid-content">-->
+<!--            <div class="item-title">-->
+<!--              <div><i class="iconfont icon-quick-start"></i></div>-->
+<!--              <div>小试牛刀</div>-->
+<!--            </div>-->
 
-            <div class="list-box">
-              <ul>
-                <li v-for="item in samples" :key="item"><a @click="send(item)">{{ item }}</a></li>
-              </ul>
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div class="grid-content">
-            <div class="item-title">
-              <div><i class="iconfont icon-plugin"></i></div>
-              <div>插件增强</div>
-            </div>
+<!--            <div class="list-box">-->
+<!--              <ul>-->
+<!--                <li v-for="item in samples" :key="item"><a @click="send(item)">{{ item }}</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </el-col>-->
+<!--        <el-col :span="8">-->
+<!--          <div class="grid-content">-->
+<!--            <div class="item-title">-->
+<!--              <div><i class="iconfont icon-plugin"></i></div>-->
+<!--              <div>插件增强</div>-->
+<!--            </div>-->
 
-            <div class="list-box">
-              <ul>
-                <li v-for="item in plugins" :key="item.value"><a @click="send(item.value)">{{ item.text }}</a></li>
-              </ul>
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div class="grid-content">
-            <div class="item-title">
-              <div><i class="iconfont icon-control"></i></div>
-              <div>能力扩展</div>
-            </div>
+<!--            <div class="list-box">-->
+<!--              <ul>-->
+<!--                <li v-for="item in plugins" :key="item.value"><a @click="send(item.value)">{{ item.text }}</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </el-col>-->
+<!--        <el-col :span="8">-->
+<!--          <div class="grid-content">-->
+<!--            <div class="item-title">-->
+<!--              <div><i class="iconfont icon-control"></i></div>-->
+<!--              <div>能力扩展</div>-->
+<!--            </div>-->
 
-            <div class="list-box">
-              <ul>
-                <li v-for="item in capabilities" :key="item">
-                  <span v-if="item.value === ''">{{ item.text }}</span>
-                  <a @click="send(item.value)" v-else>{{ item.text }}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </el-col>
-      </el-row>
+<!--            <div class="list-box">-->
+<!--              <ul>-->
+<!--                <li v-for="item in capabilities" :key="item">-->
+<!--                  <span v-if="item.value === ''">{{ item.text }}</span>-->
+<!--                  <a @click="send(item.value)" v-else>{{ item.text }}</a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </el-col>-->
+<!--      </el-row>-->
     </div>
   </div>
 </template>

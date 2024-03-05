@@ -3,7 +3,8 @@
     <el-container>
       <el-aside>
         <div class="title-box">
-          <span>{{ title }}</span>
+<!--          <span>{{ title }}</span>-->
+          <span>AI智能助手</span>
         </div>
         <div class="chat-list">
           <div class="search-box">
@@ -70,8 +71,7 @@
                 <el-dropdown-item>
                   <i class="iconfont icon-github"></i>
                   <span>
-                    powered by
-                    <el-link type="primary" href="https://github.com/yangjian102621/chatgpt-plus" target="_blank">chatgpt-plus-v3</el-link>
+                    powered by AI智能助手
                  </span>
                 </el-dropdown-item>
               </el-dropdown-menu>
@@ -81,49 +81,49 @@
       </el-aside>
       <el-main v-loading="loading" element-loading-background="rgba(122, 122, 122, 0.3)">
         <div class="chat-head">
-          <div class="chat-config">
-            <span class="role-select-label">聊天角色：</span>
-            <el-select v-model="roleId" filterable placeholder="角色" class="role-select" @change="newChat">
-              <el-option
-                  v-for="item in roles"
-                  :key="item.id"
-                  :label="item.name"
-                  :value="item.id"
-              >
-                <div class="role-option">
-                  <el-image :src="item.icon"></el-image>
-                  <span>{{ item.name }}</span>
-                </div>
-              </el-option>
-            </el-select>
+<!--          <div class="chat-config">-->
+<!--            <span class="role-select-label">聊天角色：</span>-->
+<!--            <el-select v-model="roleId" filterable placeholder="角色" class="role-select" @change="newChat">-->
+<!--              <el-option-->
+<!--                  v-for="item in roles"-->
+<!--                  :key="item.id"-->
+<!--                  :label="item.name"-->
+<!--                  :value="item.id"-->
+<!--              >-->
+<!--                <div class="role-option">-->
+<!--                  <el-image :src="item.icon"></el-image>-->
+<!--                  <span>{{ item.name }}</span>-->
+<!--                </div>-->
+<!--              </el-option>-->
+<!--            </el-select>-->
 
-            <el-select v-model="modelID" placeholder="模型" @change="newChat">
-              <el-option
-                  v-for="item in models"
-                  :key="item.id"
-                  :label="item.name"
-                  :value="item.id"
-              />
-            </el-select>
-            <el-button type="primary" @click="newChat">
-              <el-icon>
-                <Plus/>
-              </el-icon>
-              新建对话
-            </el-button>
+<!--            <el-select v-model="modelID" placeholder="模型" @change="newChat">-->
+<!--              <el-option-->
+<!--                  v-for="item in models"-->
+<!--                  :key="item.id"-->
+<!--                  :label="item.name"-->
+<!--                  :value="item.id"-->
+<!--              />-->
+<!--            </el-select>-->
+<!--            <el-button type="primary" @click="newChat">-->
+<!--              <el-icon>-->
+<!--                <Plus/>-->
+<!--              </el-icon>-->
+<!--              新建对话-->
+<!--            </el-button>-->
 
-            <el-button type="success" @click="exportChat" plain>
-              <i class="iconfont icon-export"></i>
-              <span>导出会话</span>
-            </el-button>
+<!--            <el-button type="success" @click="exportChat" plain>-->
+<!--              <i class="iconfont icon-export"></i>-->
+<!--              <span>导出会话</span>-->
+<!--            </el-button>-->
 
-            <el-button type="warning" @click="showFeedbackDialog = true">
-              <el-icon>
-                <Promotion/>
-              </el-icon>
-              <span>意见反馈</span>
-            </el-button>
-          </div>
+<!--            <el-button type="warning" @click="showFeedbackDialog = true">-->
+<!--              <el-icon>-->
+<!--                <Promotion/>-->
+<!--              </el-icon>-->
+<!--              <span>意见反馈</span>-->
+<!--            </el-button>-->
+<!--          </div>-->
         </div>
 
         <div class="right-box" :style="{height: mainWinHeight+'px'}">
@@ -226,22 +226,22 @@
       </div>
     </el-dialog>
 
-    <el-dialog
-        v-model="showNotice"
-        :show-close="true"
-        custom-class="notice-dialog"
-        title="网站公告"
-    >
-      <div class="notice">
-        <el-text type="primary">
-          <div v-html="notice"></div>
-        </el-text>
+<!--    <el-dialog-->
+<!--        v-model="showNotice"-->
+<!--        :show-close="true"-->
+<!--        custom-class="notice-dialog"-->
+<!--        title="网站公告"-->
+<!--    >-->
+<!--      <div class="notice">-->
+<!--        <el-text type="primary">-->
+<!--          <div v-html="notice"></div>-->
+<!--        </el-text>-->
 
-        <p style="text-align: right">
-          <el-button @click="notShow" type="success" plain>我知道了，不再显示</el-button>
-        </p>
-      </div>
-    </el-dialog>
+<!--        <p style="text-align: right">-->
+<!--          <el-button @click="notShow" type="success" plain>我知道了，不再显示</el-button>-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </el-dialog>-->
 
     <config-dialog v-if="isLogin" :show="showConfigDialog" :models="models" @hide="showConfigDialog = false"/>
   </div>
