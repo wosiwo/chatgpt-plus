@@ -42,6 +42,8 @@ func (h *ChatHandler) sendQWenMessage(
 	promptCreatedAt := time.Now() // 记录提问时间
 	start := time.Now()
 	var apiKey = model.ApiKey{}
+	logger.Info("apiKey：", apiKey)
+
 	response, err := h.doRequest(ctx, req, session.Model.Platform, &apiKey)
 	logger.Info("HTTP请求完成，耗时：", time.Now().Sub(start))
 	if err != nil {

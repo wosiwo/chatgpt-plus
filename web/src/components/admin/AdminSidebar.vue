@@ -86,11 +86,11 @@ const items = [
   //   index: '/admin/role',
   //   title: '角色管理',
   // },
-  // {
-  //   icon: 'api-key',
-  //   index: '/admin/apikey',
-  //   title: 'API-KEY',
-  // },
+  {
+    icon: 'api-key',
+    index: '/admin/apikey',
+    title: 'API-KEY',
+  },
   // {
   //   icon: 'model',
   //   index: '/admin/chat/model',

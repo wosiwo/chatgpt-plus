@@ -354,24 +354,23 @@ func (h *ChatHandler) sendMessage(ctx context.Context, session *types.ChatSessio
 		"role":    "user",
 		"content": prompt,
 	})
-	return h.sendQAMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
 
-	//switch session.Model.Platform {
-	//case types.Azure:
-	//	return h.sendAzureMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//case types.OpenAI:
-	//	return h.sendOpenAiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//case types.ChatGLM:
-	//	return h.sendChatGLMMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//case types.Baidu:
-	//	return h.sendBaiduMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//case types.XunFei:
-	//	return h.sendXunFeiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//case types.QWen:
-	//	return h.sendQWenMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//case types.QA:
-	//	return h.sendQAMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
-	//}
+	switch session.Model.Platform {
+	case types.Azure:
+		return h.sendAzureMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	case types.OpenAI:
+		return h.sendOpenAiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	case types.ChatGLM:
+		return h.sendChatGLMMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	case types.Baidu:
+		return h.sendBaiduMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	case types.XunFei:
+		return h.sendXunFeiMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	case types.QWen:
+		return h.sendQWenMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	case types.QA:
+		return h.sendQAMessage(chatCtx, req, userVo, ctx, session, role, prompt, ws)
+	}
 	utils.ReplyChunkMessage(ws, types.WsMessage{
 		Type:    types.WsMiddle,
 		Content: fmt.Sprintf("Not supported platform: %s", session.Model.Platform),
@@ -453,6 +452,7 @@ func (h *ChatHandler) doRequest(ctx context.Context, req types.ApiRequest, platf
 			return nil, errors.New("no available key, please import key")
 		}
 	}
+	logger.Info("apiKey ", apiKey)
 	logger.Info("platform ", platform)
 	var apiURL string
 	switch platform {

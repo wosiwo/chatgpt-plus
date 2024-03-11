@@ -1,16 +1,16 @@
 <template>
   <div class="app-background">
     <div v-if="isLogin" class="container mobile-chat-list">
-<!--      <van-nav-bar-->
-<!--          :title="title"-->
-<!--          left-text="新建会话"-->
-<!--          @click-left="showPicker = true"-->
-<!--          custom-class="navbar"-->
-<!--      >-->
-<!--        <template #right>-->
-<!--          <van-icon name="delete-o" @click="clearAllChatHistory"/>-->
-<!--        </template>-->
-<!--      </van-nav-bar>-->
+      <van-nav-bar
+          :title="title"
+          left-text="新建会话"
+          @click-left="showPicker = true"
+          custom-class="navbar"
+      >
+        <template #right>
+          <van-icon name="delete-o" @click="clearAllChatHistory"/>
+        </template>
+      </van-nav-bar>
 
       <div class="content">
         <van-search
