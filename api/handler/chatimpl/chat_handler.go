@@ -476,7 +476,7 @@ func (h *ChatHandler) doRequest(ctx context.Context, req types.ApiRequest, platf
 		logger.Info("QA type ")
 		logger.Info("req ", req)
 
-		apiURL = "http://192.168.3.109:8777/api/local_doc_qa/local_doc_chat"
+		apiURL = "http://127.0.0.1:8777/api/local_doc_qa/local_doc_chat"
 		req.UserId = "zzp"
 		req.KbIds = []string{"KB636738c4e0264ae594c96f2811107ed6"}
 		req.History = []string{"你是谁"}
